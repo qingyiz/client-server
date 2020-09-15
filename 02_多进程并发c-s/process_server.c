@@ -31,7 +31,8 @@ int main(int argc, char *argv[])
         exit(1);
     }
 	port = atoi(argv[1]);
-	/*sigaction结构体初始化*/
+	
+	/*sigaction结构体初始化，用来回收子进程pcb*/
 	struct sigaction newact;
 	newact.sa_handler = do_sigchild;	/*回调*/
 	sigemptyset(&newact.sa_mask);
@@ -54,7 +55,7 @@ int main(int argc, char *argv[])
 	printf("Accepting connections ...\n");
 	while (1) {
 		cliaddr_len = sizeof(cliaddr);
-		connfd = Accept(listenfd, (struct sockaddr *)&cliaddr, &cliaddr_len);
+		connfd = Accept(listenfd, (struct sockaddr *)&cliaddr, &cliaddr_len); /*父进程接受连接请求*/
 
 		pid = fork();
 		if (pid == 0) { /*子进程，关闭父进程监听socket*/
