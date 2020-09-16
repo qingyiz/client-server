@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
                 break;
             }
         }
-        if(i == 255){
+        if(i == 256){
             break;
         }
 		// 主线程 - 等待接受连接请求
