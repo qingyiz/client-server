@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include "wrap.h"
-
+#include <unistd.h>
 #define MAXLINE 80
 //#define SERV_PORT 8000
 
