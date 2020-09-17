@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <ctype.h>
 #include "wrap.h"
 
 #define MAXLINE 80
@@ -32,7 +33,15 @@ int main(int argc, char *argv[])
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);	/*IP地址设置成INADDR_ANY,让系统自动获取本机的IP地址。*/
     servaddr.sin_port = htons(port);				/*设置端口*/
 
-
+    
+    /*设置端口复用*/
+    /*int opt = 1; 
+    setsockopt(listenfd, SOL_SOCKET,
+               SO_REUSEPORT,
+               (const void *)&opt, 
+               sizeof(opt)
+               );*/
+    
     Bind(listenfd, (struct sockaddr *)&servaddr, sizeof(servaddr));	/*将本地地址绑定到所创建的套接字上*/
     Listen(listenfd, 20);											/*开始监听是否有客户端连接*/
 
