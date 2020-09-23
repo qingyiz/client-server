@@ -10,9 +10,8 @@
 #include "wrap.h"
 #include <pthread.h>
 #include <ctype.h>
-
 #define MAXLINE 80
-#define SERV_PORT 6666
+//#define SERV_PORT 6666
 
 /*自定义数据结构，用来线程函数传参*/
 struct s_info {
@@ -35,7 +34,6 @@ void *do_work(void *arg)
             pthread_exit(NULL);
         }
         else if (n == 0) {
-            Close(ts->connfd);
             printf("客户端断开连接 .\n");
             break;
         }
@@ -85,7 +83,7 @@ int main(int argc, char *argv[])
     Listen(listenfd, 20);		/*开始监听是否有客户端连接*/
 
     /*规定结构体的pid默认为-1，好判断该内存是否被使用*/
-    for(i = 0;i<sizeof(ts)/sizeof(ts[0]);i++){
+    for(i = 0;i<(sizeof(ts)/sizeof(ts[0]));i++){
         ts[i].pid = -1;
     }
     cliaddr_len = sizeof(cliaddr);
