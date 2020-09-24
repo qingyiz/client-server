@@ -1,11 +1,11 @@
-/* pthread_client.c */
+/* client.c */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <netinet/in.h>
 #include "wrap.h"
-
+#include <arpa/inet.h>
 #define MAXLINE 80
 //#define SERV_PORT 8000
 

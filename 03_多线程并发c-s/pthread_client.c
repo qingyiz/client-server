@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <netinet/in.h>
 #include "wrap.h"
+#include <arpa/inet.h>
 
 #define MAXLINE 80
 //#define SERV_PORT 8000
