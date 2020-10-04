@@ -85,12 +85,14 @@ int main(int argc, const char* argv[])
                     perror("recv error");
                     exit(1);
                 }
+                /*断开连接*/
                 else if(len == 0){
                     printf("客户端已经断开了连接\n");
                     close(i);
                     /* 从读集合中删除 */
                     FD_CLR(i, &reads);
                 }
+                /*接收数据*/
                 else{
                     printf("recv buf: %s\n", buf);
                     int n = strlen(buf);
