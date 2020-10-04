@@ -45,9 +45,10 @@ int main(int argc, char *argv[])
 
 	client[0].fd = listenfd;
 	client[0].events = POLLRDNORM; 					/* listenfd监听普通读事件 */
-
+	
+	/*指定为-1，规定-1为未使用*/
 	for (i = 1; i < OPEN_MAX; i++)
-		client[i].fd = -1; 							/* 用-1初始化client[]里剩下元素 */
+		client[i].fd = -1; 						
 	maxi = 0; 										/* client[]数组有效元素中最大元素下标 */
 
 	while (1){
